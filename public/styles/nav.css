@@ -1,0 +1,15 @@
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+  color: #FFFFFF;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-image: linear-gradient(to bottom right, #aaeb91, #F3FAF9);
+  padding-left: 1.5em;
+  padding-top: 1.5em;
+  padding-right: 1.5em;
+  z-index: 5;
+}
