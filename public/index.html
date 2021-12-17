@@ -55,12 +55,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <h2>Compose Tweet</h2>
         
         
 
 
         <!--------------compose new tweet -------------->
-        <h2>Compose Tweet</h2>
         <form class="incoming-tweet" action="/tweets" method="POST">
           <label for="tweet-text" class="tweet-text-label">What are you humming about?</label>
           <div class="textarea-div">
@@ -74,10 +74,32 @@
       </section>
 
 
-
-
-
-
+      <!-------------- tweet container for all tweets------------>
+      <section id="tweets-container" class="tweet-container">
+      </section>
+      <article class="tweet-article">
+        <header class="tweet-header">
+          <div class="display-pic-name">
+            <img width=50px height=50px src="${escape(avatars)}"> 
+            <h3 class="tweeter-name">${escape(name)}</h3>
+          </div>
+            <h3 class="hastag-name">${escape(tweetHandle)}</h3>
+        </header>
+        <div class="tweet-body">
+          <p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ullam fugit? A aliquid iusto qui, consequuntur, excepturi hic, saepe aperiam totam dolore incidunt nisi! Cum harum quasi, eum amet ratione suscipit cupiditate eaque minus autem? Maiores ducimus illo unde sint, sequi facilis labore voluptatibus architecto soluta fugiat neque velit voluptatum.</p>
+        </div>
+        <footer class="tweet-footer">
+          <p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio nemo similique quis hic quisquam odio amet dignissimos voluptate officia minima!</p>
+          </p>
+          <span class="footer-icons">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+          </span>
+        </footer>
+      </article>
     </main>
   </body>
 </html>
