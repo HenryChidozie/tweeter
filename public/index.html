@@ -61,10 +61,20 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        
-        
 
-
+        <!-----Error messages for validating character counter ------>
+        <div class="main-error">
+          <div id="0characters" class="error">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <p>You cannot send an empty tweet!</p>
+          </div>
+          <div id="tweet-too-long" class="error">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <p>Tweet is too long. Please watch the counter!</p>
+          </div>
+      </div>
+        
+    
         <!--------------compose new tweet -------------->
         <form class="incoming-tweet" action="/tweets" method="POST">
           <label for="tweet-text" class="tweet-text-label">What are you humming about?</label>
