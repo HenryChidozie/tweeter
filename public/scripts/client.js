@@ -12,6 +12,21 @@ const escape = function(str) {
   return tweetArticle.innerHTML;
 };
 
+//Helper function set timeout for error messages
+const popError = function() {
+  $(".error").delay(15000).slideUp("slow");
+};
+
+// Returning tweet <article> when doc is ready
+$(document).ready(() => {
+  //Hide error message by default
+  $(".error").hide();
+
+  //Setting toggle button on NAV bar
+  $(".fas.fa-angle-double-down ").on("click", (event) => { 
+    $(".incoming-tweet").toggle("slow");
+    $(".textarea").focus();
+  });
 
  //data OBJECT from the data ARRAY extracted
  const renderTweets = function(tweets) {
