@@ -6,9 +6,28 @@
 
 
 //Escape function so XSS for tweet element is not rendered as a string literal
+const escape = function(str) {
+  let tweetArticle = document.createElement("tweet-article");
+  tweetArticle.appendChild(document.createTextNode(str));
+  return tweetArticle.innerHTML;
+};
 
+
+
+ //data OBJECT from the data ARRAY extracted
+ const renderTweets = function(tweets) {
+  $("#tweets-container").empty();
+  for (const item of tweets) {
+    // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
+    const tweet = createTweetElement(item);
+    console.log("Tweet from line 43: ", tweet);
+    $("#tweets-container").prepend(tweet);
+  }
+};
   
-  // Pass the data OBJECT that extracted by renderTweets function to below so each tweet will be reflected on the browser
+  // Passing data OBJECT from renderTweets function
   const createTweetElement = function(tweetData) {
     const name = tweetData.user.name;
     const avatars = tweetData.user.avatars;
