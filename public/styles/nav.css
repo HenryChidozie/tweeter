@@ -13,3 +13,56 @@
   padding-right: 1.5em;
   z-index: 5;
 }
+
+
+.nav div {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.5em;
+  margin-top: -0.5em;
+}
+
+.page-name {
+  font-family: 'Bungee', cursive;
+  padding-top: 5%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+ 
+}
+
+.write-new-tweet{
+  display: flex;
+  justify-content: flex-end;;
+  flex-direction: column;
+  color: whitesmoke;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
+}
+
+.fas.fa-angle-double-down  {
+  display: flex;
+  padding-left: 3em;
+  padding-top: 10px;
+  padding-bottom: 1.5em;
+  color: red;
+  transform-origin: bottom;
+ 
+}
+
+.bounce {
+  display: inline-block;
+  position: relative;
+  -webkit-animation: bounce 0.5s infinite linear;
+  animation: bounce 0.5s infinite linear;
+}
+
+@-webkit-keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.5em; }
+  100% { top: 0; }
+}
+
+.fas.fa-angle-double-down:hover  {
+  cursor: pointer;
+}
