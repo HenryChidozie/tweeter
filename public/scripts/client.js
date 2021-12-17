@@ -98,6 +98,21 @@ const escape = function(str) {
     }
   });
 
+    // loadtweets function for fetching tweets from "/tweets" page
+    const loadTweets = function() {
+      $.ajax({
+        method: "GET",
+        url: "/tweets",
+        data: "json",
+        success: function(data) {
+          console.log("Success: ", data);
+          renderTweets(data);
+        }
+      });
+    };
+    loadTweets();
+});
+
 
 
 
