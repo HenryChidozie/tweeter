@@ -13,7 +13,6 @@ const escape = function(str) {
 };
 
 
-
  //data OBJECT from the data ARRAY extracted
  const renderTweets = function(tweets) {
   $("#tweets-container").empty();
@@ -63,6 +62,42 @@ const escape = function(str) {
     return tweetHtml;
   };
 });
+
+
+  //event listener added to prevent degault behaviour
+  const $incomingTweet = $(".incoming-tweet");
+  $incomingTweet.on('submit',function(event) {
+    event.preventDefault();
+    console.log("Incoming tweet is on its way, performing ajax call...");
+
+    //form serialized and sent to server as a query string
+    const formDataString = $(this).serialize();
+    console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
+    console.log("this: ", this);
+    console.log("formDataString: ", formDataString);
+    
+
+    //Form validation on character counts to trigger corresponding error message
+    const tweetLength = $(".textarea").val().length;
+    console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
+    
+    if (tweetLength === 0) {
+      $("#0characters").slideDown("slow", popError);
+    } else if (tweetLength > 140) {
+      $("#tweet-too-long").slideDown("slow", popError);
+    } else {
+      $.ajax({
+        method: "POST",
+        url: "/tweets",
+        data: formDataString,
+        success: function(formDataString) {
+          console.log("Success", formDataString);
+          loadTweets();
+        }
+      });
+    }
+  });
+
 
 
 
