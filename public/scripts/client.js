@@ -1,3 +1,4 @@
+
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -5,7 +6,7 @@
  */
 
 
-//Escape function so XSS for tweet element is not rendered as a string literal
+//Escape function to prevent XSS for tweet element created as a string literal
 const escape = function(str) {
   let tweetArticle = document.createElement("tweet-article");
   tweetArticle.appendChild(document.createTextNode(str));
@@ -23,25 +24,25 @@ $(document).ready(() => {
   $(".error").hide();
 
   //Setting toggle button on NAV bar
-  $(".fas.fa-angle-double-down ").on("click", (event) => { 
+  $(".fas.fa-angle-double-down ").on("click", (event) => {
     $(".incoming-tweet").toggle("slow");
     $(".textarea").focus();
   });
 
- //data OBJECT from the data ARRAY extracted
- const renderTweets = function(tweets) {
-  $("#tweets-container").empty();
-  for (const item of tweets) {
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
-    const tweet = createTweetElement(item);
-    console.log("Tweet from line 43: ", tweet);
-    $("#tweets-container").prepend(tweet);
-  }
-};
+  //Extract each data OBJECT from the data ARRAY
+  const renderTweets = function(tweets) {
+    $("#tweets-container").empty();
+    for (const item of tweets) {
+      // loops through tweets
+      // calls createTweetElement for each tweet
+      // takes return value and appends it to the tweets container
+      const tweet = createTweetElement(item);
+      console.log("Tweet from line 43: ", tweet);
+      $("#tweets-container").prepend(tweet);
+    }
+  };
   
-  // Passing data OBJECT from renderTweets function
+  // Pass the data OBJECT that extracted by renderTweets function to below so each tweet will be reflected on the browser
   const createTweetElement = function(tweetData) {
     const name = tweetData.user.name;
     const avatars = tweetData.user.avatars;
@@ -76,16 +77,15 @@ $(document).ready(() => {
       `;
     return tweetHtml;
   };
-});
+  
 
-
-  //event listener added to prevent degault behaviour
+  //Add event listener for for submission & prevent default behavior
   const $incomingTweet = $(".incoming-tweet");
   $incomingTweet.on('submit',function(event) {
     event.preventDefault();
     console.log("Incoming tweet is on its way, performing ajax call...");
 
-    //form serialized and sent to server as a query string
+    //Serialize raw data input in the form (Compose Tweet box)
     const formDataString = $(this).serialize();
     console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
     console.log("this: ", this);
@@ -113,25 +113,23 @@ $(document).ready(() => {
     }
   });
 
-    // loadtweets function for fetching tweets from "/tweets" page
-    const loadTweets = function() {
-      $.ajax({
-        method: "GET",
-        url: "/tweets",
-        data: "json",
-        success: function(data) {
-          console.log("Success: ", data);
-          renderTweets(data);
-        }
-      });
-    };
-    loadTweets();
+  // Function for fetching tweets from "/tweets" page
+  const loadTweets = function() {
+    $.ajax({
+      method: "GET",
+      url: "/tweets",
+      data: "json",
+      success: function(data) {
+        console.log("Success: ", data);
+        renderTweets(data);
+      }
+    });
+  };
+  loadTweets();
 });
 
-
-
-
-
-
-
-
+$(".new-tweet").hide();
+$(".nav-actions").on("click", function() {
+  $(".new-tweet").slideToggle();
+  $("textarea").focus();
+});

@@ -27,7 +27,7 @@
 .new-tweet {
   height: 30%;
   width: 100%;
-  background-image: linear-gradient(to left, 	#3cbd6dc2, #F3FAF9);
+  background-image: linear-gradient(to left, 	#637c274f, #F3FAF9);
   padding: 10px 30px 20px 30px;
 }
 
@@ -40,7 +40,7 @@
   font-family: 'Bungee', cursive;
   font-size: 17px;
   background-color: #4056A1;
-  color: #FFFFFF;
+  color: #2116b6;
   margin-top: 15px;
 
 }

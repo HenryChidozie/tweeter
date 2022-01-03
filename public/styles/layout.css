@@ -30,7 +30,7 @@ body {
    justify-content: center;
    display: flex;
    width: 90%;
-   background-image: linear-gradient(to top right, #DEF6F4, #F3FAF9);
+   background-image: linear-gradient(to top right, #ecf6de, #f4faf3);
    margin: 0 auto;
    flex-direction: column;
    padding-top: 530px;
