@@ -73,7 +73,6 @@ $(document).ready(() => {
                  </span>
                </footer>
              </article>
-
       `;
     return tweetHtml;
   };
@@ -83,18 +82,12 @@ $(document).ready(() => {
   const $incomingTweet = $(".incoming-tweet");
   $incomingTweet.on('submit',function(event) {
     event.preventDefault();
-    //console.log("Incoming tweet is on its way, performing ajax call...");
 
     //Serialize raw data input in the form (Compose Tweet box)
     const formDataString = $(this).serialize();
-    // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
-    // console.log("this: ", this);
-    // console.log("formDataString: ", formDataString);
     
-
     //Form validation on character counts to trigger corresponding error message
     const tweetLength = $(".textarea").val().length;
-    //console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
     
     if (tweetLength === 0) {
       $("#0characters").slideDown("slow", popError);
@@ -114,7 +107,6 @@ $(document).ready(() => {
       });
     }
   });
-
   // Function for fetching tweets from "/tweets" page
   const loadTweets = function() {
     $.ajax({
@@ -130,7 +122,6 @@ $(document).ready(() => {
 });
 
 $(".new-tweet").hide();
-
 $(".nav-actions").on("click", function() {
   $(".new-tweet").slideToggle();
   $("textarea").focus();
