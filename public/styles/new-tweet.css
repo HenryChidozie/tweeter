@@ -36,11 +36,11 @@
   flex-direction: column;
 }
 
-.submit-button {
+.submit {
   font-family: 'Bungee', cursive;
   font-size: 17px;
-  background-color: #4056A1;
-  color: #2116b6;
+  background-color: #9aa0b6;
+  color: #2c22c2;
   margin-top: 15px;
 
 }

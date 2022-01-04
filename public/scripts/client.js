@@ -37,7 +37,6 @@ $(document).ready(() => {
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
       const tweet = createTweetElement(item);
-      console.log("Tweet from line 43: ", tweet);
       $("#tweets-container").prepend(tweet);
     }
   };
@@ -50,14 +49,14 @@ $(document).ready(() => {
     const tweetContent = tweetData.content.text;
     const tweetCreated = timeago.format(tweetData.created_at);
 
-    const tweetHtml = `       
+    let tweetHtml = `       
              <article class="tweet-article">
                <header class="tweet-header">
                  <div class="display-pic-name">
                    <img width=50px height=50px src="${escape(avatars)}"> 
-                   <h3 class="tweeter-name">${escape(name)}</h3>
+                   <h2 class="tweeter-name">${escape(name)}</h2>
                  </div>
-                   <h3 class="hastag-name">${escape(tweetHandle)}</h3>
+                   <h2 class="hastag-name">${escape(tweetHandle)}</h2>
                </header>
                <div class="tweet-body">
                  <p>
@@ -68,12 +67,13 @@ $(document).ready(() => {
                    ${escape(tweetCreated)}
                  </p>
                  <span class="footer-icons">
-                   <i class="fas fa-flag"></i>
-                   <i class="fas fa-retweet"></i>
-                   <i class="fas fa-heart"></i>
+                   <i class="fas fa-flag" aria-hidden="true"></i>&nbsp
+                   <i class="fas fa-retweet" aria-hidden="true"></i>&nbsp
+                   <i class="fas fa-heart" aria-hidden="true"></i>&nbsp
                  </span>
                </footer>
              </article>
+
       `;
     return tweetHtml;
   };
@@ -83,18 +83,18 @@ $(document).ready(() => {
   const $incomingTweet = $(".incoming-tweet");
   $incomingTweet.on('submit',function(event) {
     event.preventDefault();
-    console.log("Incoming tweet is on its way, performing ajax call...");
+    //console.log("Incoming tweet is on its way, performing ajax call...");
 
     //Serialize raw data input in the form (Compose Tweet box)
     const formDataString = $(this).serialize();
-    console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
-    console.log("this: ", this);
-    console.log("formDataString: ", formDataString);
+    // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
+    // console.log("this: ", this);
+    // console.log("formDataString: ", formDataString);
     
 
     //Form validation on character counts to trigger corresponding error message
     const tweetLength = $(".textarea").val().length;
-    console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
+    //console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
     
     if (tweetLength === 0) {
       $("#0characters").slideDown("slow", popError);
@@ -105,8 +105,10 @@ $(document).ready(() => {
         method: "POST",
         url: "/tweets",
         data: formDataString,
-        success: function(formDataString) {
-          console.log("Success", formDataString);
+        success: function() {
+          $(".textarea").val("");
+          $(".counter").html(140);
+          $("#tweets-container").empty();
           loadTweets();
         }
       });
@@ -120,7 +122,6 @@ $(document).ready(() => {
       url: "/tweets",
       data: "json",
       success: function(data) {
-        console.log("Success: ", data);
         renderTweets(data);
       }
     });
@@ -129,6 +130,7 @@ $(document).ready(() => {
 });
 
 $(".new-tweet").hide();
+
 $(".nav-actions").on("click", function() {
   $(".new-tweet").slideToggle();
   $("textarea").focus();
