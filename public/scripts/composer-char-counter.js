@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 //this function will implement the character counter
 $(document).ready(function() {

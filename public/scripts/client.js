@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 /*
  * Client-side JS logic goes here
@@ -15,7 +16,7 @@ const escape = function(str) {
 
 //Helper function set timeout for error messages
 const popError = function() {
-  $(".error").delay(15000).slideUp("slow");
+  $(".error").delay(1000).slideUp("slow");
 };
 
 // Returning tweet <article> when doc is ready

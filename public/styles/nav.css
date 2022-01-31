@@ -26,7 +26,6 @@
   padding-top: 5%;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
- 
 }
 
 .write-new-tweet{
@@ -45,7 +44,6 @@
   padding-bottom: 1.5em;
   color: red;
   transform-origin: bottom;
- 
 }
 
 .bounce {
@@ -64,4 +62,10 @@
 
 .fas.fa-angle-double-down:hover  {
   cursor: pointer;
+}
+
+@media all and (max-width: 768px) {
+  nav {
+    justify-content: flex;
+  }
 }
